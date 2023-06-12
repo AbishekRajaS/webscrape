@@ -1,0 +1,55 @@
+<html>
+<head>
+    <style>
+        table, th, td {
+          border-collapse: collapse;
+          text-align: center;
+          padding: 5px;
+          
+        }
+        table.center {
+           margin-left: auto; 
+           margin-right: auto;
+           width: 100%;
+       }
+        </style>
+</head>
+<body>
+    <table border="2" class="center">
+
+        <thead>
+          <tr>
+            <th>Domain Name</th>
+            <th>Word Count</th>
+            <th>Favourite</th>
+            <th>Web Link</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%if (rec.length >0){ %>
+          <% rec.forEach(function(data){ %>
+          <tr>
+            <td><%= data.domainName %></td>
+            <td><%= data.wordCount %></td>
+            <td><%= data.favourite %></td>
+            <td><a href=<%= data.webLink %>> <%= data.webLink %></a></td>
+            <td>
+              <a href="/websrape/website/update/<%= data._id %>">Add To Favourite</a>
+            </br> <a href="/websrape/website/delete/<%= data._id %>"> Delete</a>
+            </td>
+           
+          </tr>
+          <% })}else{ %>
+            <tr>
+                <td colspan="5">No Record</td>
+                
+              </tr>
+            <% } %>
+        </tbody>
+      </table>
+</body>
+</html>
+
+
+ 
